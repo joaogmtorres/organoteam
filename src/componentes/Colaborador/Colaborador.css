@@ -7,13 +7,15 @@
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
-    color: #b80303;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.08);
-    font-size: 12px;
-    border: none;
-    line-height: 22px;
-    font-weight: bold;
-    margin-bottom: 8px;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.apagar:hover{
+    color: #ff4d4d;
+    transform: scale(1.2);
+
 }
 
 .colaborador .cabecalho {

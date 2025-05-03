@@ -1,6 +1,7 @@
 .times {
     padding: 32px;
     text-align: center;    
+    position: relative;
 }
 
 .times h3 {
@@ -16,4 +17,11 @@
     flex-wrap: wrap;
     margin-top: 32px;
     justify-content: space-around;
+}
+
+.input-color{
+    border: none;
+    position: absolute;
+    top: 20px;
+    right: 50px;
 }
