@@ -3,18 +3,20 @@ import CampoTexto from '../CampoTexto'
 import ListaSuspensa from '../ListaSuspensa'
 import BotaoCadastro from '../BotaoCadastro'
 import { useState } from 'react'
+import CampoCor from '../CampoCor'
 
-const Formulario = (props) => {
+const Formulario = ({cadastrarTime, times, aoColaboradorCadastrado}) => {
 
     const [nome, setNome] = useState('')
     const [cargo, setCargo] = useState('')
     const [imagem, setImagem] = useState('')
     const [time, setTime] = useState('')
-
+    const [nomeTime, setNomeTime] = useState('')
+    const [corTime, setCor] = useState('')
         
     const aoSalvar = (event)=>{
         event.preventDefault()
-        props.aoColaboradorCadastrado({
+        aoColaboradorCadastrado({
             nome,
             cargo,
             imagem,
@@ -23,6 +25,13 @@ const Formulario = (props) => {
         setNome('')
         setCargo('')
         setImagem('')
+    }
+
+    const aoSalvarTime = (event)=>{
+        event.preventDefault()
+        cadastrarTime({ nome: nomeTime, cor: corTime })
+        setCor('')
+        setNomeTime('')
     }
 
     return (
@@ -48,12 +57,29 @@ const Formulario = (props) => {
                     aoAlterar={valor =>setImagem(valor)} />
                 <ListaSuspensa 
                     label="Times" 
-                    itens={props.times} 
+                    itens={times} 
                     required={true} 
                     valor={time} 
                     aoAlterar={valor => setTime(valor)}/>
                 <BotaoCadastro>
                     Criar Card
+                </BotaoCadastro>
+            </form>
+            <form onSubmit={aoSalvarTime}>
+                <h2>Preencha os dados para criar um novo Time</h2>
+                <CampoTexto 
+                    required = {true} 
+                    label="Nome" 
+                    placeholder='Digite o nome do Time' 
+                    valor={nomeTime} 
+                    aoAlterar={valor =>setNomeTime(valor)}
+                />
+                <CampoCor 
+                    valor={corTime} 
+                    aoAlterar={valor => setCor(valor)} 
+                />
+                <BotaoCadastro>
+                    Criar Time
                 </BotaoCadastro>
             </form>
         </section>
